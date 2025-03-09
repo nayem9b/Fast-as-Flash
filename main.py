@@ -1,5 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from typing import Optional
 
 class Review(BaseModel):
     name_stars: str
@@ -47,11 +48,19 @@ class Item(BaseModel):
 
 # Define items at application start
 items = {"apples", "oranges", "bananas"}
+class Item(BaseModel):
+    name: str
+    quantity: Optional[int] = 0
+items = {"scissors": Item(name="scissors", quantity=100)}
+
 
 
 @app.delete("/items")
 def delete_item(item: Item):
     name = item.name
-    # Delete the item
-    items.remove(name)
+    if name in items:
+        items.remove(name)
+    else:
+        # Raise HTTPException with status code for "not found"
+        raise HTTPException(status_code=404, detail="Item not found.")
     return {}
