@@ -15,3 +15,8 @@ curl -X PUT \
   -d '{"name": "bananas", "description": "Delicious!"}' \
   http://localhost:8000/items
 
+curl -X DELETE \
+  -H 'Content-Type: application/json' \
+  -d '{"name": "bananas"}' \
+  http://localhost:8000/items
+

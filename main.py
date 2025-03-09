@@ -40,3 +40,18 @@ def create_review(review: MovieReview):
 # @app.post("/")
 # def root(item: Item):
 #     name = item.name
+
+
+class Item(BaseModel):
+    name: str
+
+# Define items at application start
+items = {"apples", "oranges", "bananas"}
+
+
+@app.delete("/items")
+def delete_item(item: Item):
+    name = item.name
+    # Delete the item
+    items.remove(name)
+    return {}
