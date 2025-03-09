@@ -1,1 +1,17 @@
 fastapi dev main.py
+
+
+api = "http://moviereviews.co/reviews/"
+body = {"text": "A great movie!"}
+response = requests.post(api, json-body)
+
+curl -X POST \
+  -H 'Content-Type: application/json' \
+  -d '{"name": "bananas"}' \
+  http://localhost:8000
+
+curl -X PUT \
+  -H 'Content-Type: application/json' \
+  -d '{"name": "bananas", "description": "Delicious!"}' \
+  http://localhost:8000/items
+
